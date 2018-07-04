@@ -1,0 +1,64 @@
+<!-- 轮播图Start  -->
+<view>
+    <swiper indicator-dots='{{indicatorDots}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}'>
+        <block wx:for="{{image}}" wx:key="*this">
+            <swiper-item>
+                <view>
+                    <image src='{{item}}' class='swiper_image'></image>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+<!-- 轮播图End  -->
+
+<!-- 分类Category  -->
+<view class='category clearfix'>
+    <view class='category_item' wx:for="{{iconArray}}" wx:key="*this">
+        <view class='icon_wrap'>
+            <image src='{{item.iconUrl}}'></image>
+            <text>{{item.iconText}}</text>
+        </view>
+    </view>
+</view>
+
+<view class='common_title'>
+    <text>电影推荐</text>
+</view>
+
+<!-- 电影推荐  -->
+<view class='movie_item' wx:for="{{movieList}}" wx:key="*this">
+    <view class='movie_item_title'>
+        <text>{{item.movieTitle}}</text>
+    </view>
+    <view class='movie_item_image'>
+        <image src='{{item.movieImage}}'></image>
+    </view>
+</view>
+
+<view class='common_title'>
+    <text>猜你喜欢</text>
+</view>
+
+<!-- 商品列表 -->
+<view class='goods_list' wx:for="{{goodsList}}" wx:key="*this">
+    <view class='goods_left'>
+        <image src='{{item.goodsImage}}' class='goods_image'></image>
+    </view>
+    <view class='goods_right'>
+        <navigator url='/pages/spdetail/spdetail?goods_id={{item.goodsId}}'>
+            <view class='goods_name'>
+                <text>{{item.goodsName}}</text>
+            </view>
+            <view class='goods_address'>
+                <text>{{item.goodsAddress}}</text>
+            </view>
+            <view class='goods_price'>
+                <text>￥{{item.goodsPrice}}</text>
+                <view class='good_carimg'>
+                    <image src="../../image/car.png"></image>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</view>

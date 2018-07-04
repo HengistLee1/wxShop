@@ -1,0 +1,97 @@
+/* 通用样式 */
+.common_title{
+    padding: 10px;
+    font-size: 16px;
+    border-bottom: 1px solid #e9e9e9;
+}
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+} 
+
+/* 分类  */
+.category{
+    background-color: #fff;
+    padding: 10px 0px 0px 0px;
+    border-bottom: 1px solid #e9e9e9;
+}
+.category_item{
+    width: 25%;
+    margin-bottom: 10px;
+    float: left;
+}
+.icon_wrap{
+    width: 40px;
+    margin: 0 auto;
+}
+.icon_wrap image{
+    width: 40px;
+    height: 40px;
+}
+.icon_wrap text{
+    width: 40px;
+    text-align: center;
+    font-size: 13px;
+    display: block;
+    color: #737373;
+}
+
+/* 电影推荐 */
+.movie_item{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.movie_item_title{
+    font-size: 16px;
+    padding: 10px 0;
+}
+.movie_item_image{
+    line-height: 0;
+}
+
+/* 商品列表 */
+.goods_list{
+    height: 100px;
+    background-color: #ffffff;
+    padding-left:100px; 
+    position: relative;
+}
+.goods_image{
+    width: 80px;
+    height: 80px;
+}
+.goods_left{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.goods_right{
+    padding: 10px 0;
+    height: 80px;
+    overflow: hidden;
+}
+.goods_name{
+    font-size: 14px;
+}
+.goods_address{
+    color: #929292;
+    font-size: 12px;
+}
+.goods_price{
+    font-size: 14px;
+    color: #ff1493;
+    width: 100%;
+    line-height: 22px;
+    height: 22px;
+    margin-top: 5px;
+}
+.good_carimg{
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
+}
+.good_carimg image{
+    width: 20px;
+    height: 20px;
+}
