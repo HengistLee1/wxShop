@@ -1,0 +1,32 @@
+<!-- 购物车模块  -->
+<view class='car_item_wrap' wx:for="{{carArray}}" wx:key="*this" wx:if="{{item.carShow}}">
+    <view class='car_image_wrap'>
+        <image src='{{item.carImage}}'></image>
+    </view>
+    <view class='car_item_title'>
+        {{item.carName}}
+    </view>
+    <view class='car_item_bot'>
+        <view class='car_item_price'>
+            ￥{{item.carPrice}}
+        </view>
+        <image  class="car_item_del" src='../../image/shanchu.png'></image>
+        <view class='car_item_operate'>
+            <view class='car_item_reduce car_item_btn'>-</view>
+            <text class='car_item_num'>{{item.carNum}}</text>
+            <view class='car_item_add car_item_btn'>+</view>
+        </view>
+    </view>
+</view>
+
+<view class='car_list_bot'>
+    还差<text class="red">¥100.00</text>元包邮,前往凑单
+    <image src='../../image/icon-arrow.png'></image>
+</view>
+
+<view class='car_bot'>
+    <view class='car_bot_wrap'>
+        总价<text class='car_total_money'> ￥169.00</text>
+        <view class='car_order_confirm'>下单</view>
+    </view>
+</view>

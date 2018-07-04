@@ -1,0 +1,111 @@
+/*商品列表  */
+.car_item_wrap{
+    background-color: #fff;
+    height: 100px;
+    border-bottom: 1px solid #e7e7eb;
+    padding-left: 100px;
+    position: relative;
+}
+.car_image_wrap{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.car_image_wrap image{
+    width: 80px;
+    height: 80px;
+}
+.car_item_title{
+    font-size: 14px;
+    padding: 10px 10px 10px 0px;
+}
+.car_item_bot{
+    padding:0px 10px 0px 0px;
+    height: 28px;
+    line-height: 28px;
+}
+.car_item_price{
+    font-size: 14px;
+    color: #ff0000;
+    width: 70px;
+    float: left;
+}
+.car_item_operate{
+    display: inline-block;
+    float: right;
+}
+.car_item_btn{
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    border: 1px solid #b2b2b2;
+    text-align: center;
+    line-height: 28px;
+    color: #929292;
+}
+.car_item_num{
+    width: 40px;
+    height: 26px;
+    display: inline-block;
+    border-top: 1px solid #b2b2b2;
+    border-bottom: 1px solid #b2b2b2;
+    text-align: center;
+    line-height: 28px;
+    color: #929292;
+}
+.car_item_del{
+    width: 28px;
+    height: 28px;
+    float: right;
+    display: inline-block;
+    margin-left: 10px;
+}
+/*商品列表End  */
+
+.car_list_bot{
+    background-color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+    height: 25px;
+    line-height: 25px;
+    padding-right: 50px;
+    position: relative;
+    color: #929292
+}
+.red{
+    color: #ff0000;
+}
+.car_list_bot image{
+    width: 30px;
+    height: 25px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.car_bot{
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+}
+.car_bot_wrap{
+    padding: 10px;
+    height: 30px;
+    line-height: 30px;
+}
+.car_total_money{
+    color: #ff0000;
+    margin-left: 5px;
+}
+.car_order_confirm{
+    float: right;
+    background-color: #ff7e3a;
+    color: #fff;
+    border-radius: 3px;
+    width: 80px;
+    text-align: center;
+}

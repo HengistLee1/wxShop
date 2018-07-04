@@ -4,7 +4,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+      carArray: [
+          {
+                goodsId: 1,
+                carImage: '../../image/test.jpg',
+                carName: '木村耀司登山旅行大学生户外情侣双肩背包外带小背包1',
+                carPrice: '169.00',
+                carNum: 1,
+                carShow: true
+          },
+          {
+              goodsId: 1,
+              carImage: '../../image/test.jpg',
+              carName: '木村耀司登山旅行大学生户外情侣双肩背包外带小背包2',
+              carPrice: '169.00',
+              carNum: 1,
+              carShow: false
+          },
+          {
+              goodsId: 1,
+              carImage: '../../image/test.jpg',
+              carName: '木村耀司登山旅行大学生户外情侣双肩背包外带小背包3',
+              carPrice: '169.00',
+              carNum: 1,
+              carShow: true
+          }
+      ]
   },
 
   /**
