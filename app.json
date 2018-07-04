@@ -1,10 +1,10 @@
 {
   "pages":[
+    "pages/spdetail/spdetail",
     "pages/car/car",
     "pages/index/index",
     "pages/activities/activities",
-    "pages/my/my",
-    "pages/spdetail/spdetail"
+    "pages/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",
