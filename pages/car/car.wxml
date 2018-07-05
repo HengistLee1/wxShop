@@ -27,6 +27,6 @@
 <view class='car_bot'>
     <view class='car_bot_wrap'>
         总价<text class='car_total_money'> ￥{{totalPrice}}</text>
-        <view class='car_order_confirm'>下单</view>
+        <view class='car_order_confirm' bindtap='getPay'>下单</view>
     </view>
 </view>

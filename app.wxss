@@ -8,3 +8,9 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+page{
+    background-color: #f5f6f7;
+    height: 100%;
+    letter-spacing: 1px;
+}
