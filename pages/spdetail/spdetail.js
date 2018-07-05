@@ -42,7 +42,18 @@ Page({
                 cozy: "请使用60度一下温水",
                 goodsDetails: "../../image/IMG_0466.JPG"
             }
-        ]
+        ],
+        carTotalNum: 0
+    },
+
+    /**
+     * 点击“加入购物车”时，会在左边的购物车响应
+     */
+    addToCar: function(){
+        var newNum = this.data.carTotalNum + 1;
+        this.setData({
+            carTotalNum: newNum
+        })
     },
 
     /**

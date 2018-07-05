@@ -82,12 +82,12 @@
     <view>
         <view class='goods_one'>
             <image src='../../image/car.png'></image>
-            <text class='goods_num'>0</text>    
+            <text class='goods_num'>{{carTotalNum}}</text>    
         </view>
         <view class='goods_half red'>
             前往商城
         </view>
-        <view class='goods_half blue'>
+        <view class='goods_half blue' bindtap='addToCar'>
             加入购物车
         </view>
         <view class='goods_half green'>

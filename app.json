@@ -1,8 +1,8 @@
 {
   "pages":[
-    "pages/spdetail/spdetail",
     "pages/car/car",
     "pages/index/index",
+    "pages/spdetail/spdetail",
     "pages/activities/activities",
     "pages/my/my"
   ],
