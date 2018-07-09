@@ -1,9 +1,9 @@
 {
   "pages":[
     "pages/car/car",
+    "pages/spdetail/spdetail",
     "pages/pay/pay",
     "pages/index/index",
-    "pages/spdetail/spdetail",
     "pages/activities/activities",
     "pages/my/my"
   ],

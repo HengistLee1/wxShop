@@ -4,43 +4,62 @@ Page({
      * 页面的初始数据
      */
     data: {
-        carArray: [
-            {
-                goodsId: 1,
-                carImage: '../../image/test.jpg',
-                carName: '木村耀司登山旅行大学生户外情侣双肩背包外带小背包1',
-                carPrice: '169.00',
-                carNum: 1,
-                carShow: true
-            },
-            {
-                goodsId: 1,
-                carImage: '../../image/test.jpg',
-                carName: '木村耀司登山旅行大学生户外情侣双肩背包外带小背包2',
-                carPrice: '169.00',
-                carNum: 1,
-                carShow: false
-            },
-            {
-                goodsId: 1,
-                carImage: '../../image/test.jpg',
-                carName: '木村耀司登山旅行大学生户外情侣双肩背包外带小背包3',
-                carPrice: '100.00',
-                carNum: 1,
-                carShow: true
-            }
-        ],
-        totalPrice: 269.00
+        // carArray: [
+        //     {
+        //         goodsId: 1,
+        //         carImage: '../../image/test.jpg',
+        //         carName: '木村耀司登山旅行大学生户外情侣双肩背包外带小背包1',
+        //         carPrice: '169.00',
+        //         carNum: 1,
+        //         carShow: true
+        //     },
+        //     {
+        //         goodsId: 1,
+        //         carImage: '../../image/test.jpg',
+        //         carName: '木村耀司登山旅行大学生户外情侣双肩背包外带小背包2',
+        //         carPrice: '169.00',
+        //         carNum: 1,
+        //         carShow: false
+        //     },
+        //     {
+        //         goodsId: 1,
+        //         carImage: '../../image/test.jpg',
+        //         carName: '木村耀司登山旅行大学生户外情侣双肩背包外带小背包3',
+        //         carPrice: '100.00',
+        //         carNum: 1,
+        //         carShow: true
+        //     }
+        // ]
+    },
+
+    /**
+     * 生命周期函数--监听页面加载
+     * 页面加载时拿到缓存数据
+     */
+    onLoad: function (options) {
+        var getCarData = wx.getStorageSync('GoodsCarList');
+        console.log(getCarData);
+
+        var total = 0;
+        for (var i = 0; i < getCarData.length; i++) {
+          total = total + getCarData[i].carPrice * getCarData[i].carNum;
+        }
+
+        this.setData({
+          carArray: getCarData,
+          totalPrice: total
+        });
     },
 
     /**
      * 更改商品数量
      */
-    NumChange: function (e) {
-        let Index = e.currentTarget.dataset.index; //点击的商品下标值
-        //console.log(Index);
-        var shopCar = this.data.carArray;
-        var types = e.currentTarget.dataset.types; //是加号还是减号
+    NumChange: function (options) {
+        var that = this;
+        let Index = options.target.dataset.index; //点击的商品下标值
+        console.log("商品下标：" + Index);
+        var shopCar = that.data.carArray;
+        var types = options.target.dataset.types; //是加号还是减号
         //console.log(types);
         var total = 0;
         switch (types) {
@@ -51,7 +70,7 @@ Page({
                 shopCar[Index].carNum > 0 ? shopCar[Index].carNum-- : 0; //对应商品的数量-1
                 break;
         }
-        for(var i in shopCar){
+        for (var i in shopCar) {
             total += parseInt(shopCar[i].carPrice) * shopCar[i].carNum;
         }
         this.setData({
@@ -64,11 +83,11 @@ Page({
     /**
      * 删除功能
      */
-    delProduct: function(e){
+    delProduct: function (e) {
         let Index = e.currentTarget.dataset.index;
         var shopCar = this.data.carArray;
-        for(var i in shopCar){
-            if(i == Index){
+        for (var i in shopCar) {
+            if (i == Index) {
                 //console.log("enter");
                 this.setData({
                     carShow: false
@@ -80,18 +99,10 @@ Page({
     /**
      * 跳转到支付页面
      */
-    getPay: function(){
+    getPay: function () {
         wx.navigateTo({
             url: '../pay/pay',
         })
-    },
-
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-
     },
 
     /**

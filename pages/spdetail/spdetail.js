@@ -18,7 +18,7 @@ Page({
         duration: 500,
         goods: [
             {
-                goodsId: 1,
+                goodsId: 2,
                 goodsName: "木村耀司登山旅行大学生户外情侣双肩背包外带小背包",
                 goodsImage: "../../image/test.jpg",
                 goodsImgs: [
@@ -50,17 +50,53 @@ Page({
      * 点击“加入购物车”时，会在左边的购物车响应
      */
     addToCar: function(){
-        var newNum = this.data.carTotalNum + 1;
+        var CarData = {
+          goodsId: this.data.goods[0].goodsId,
+          carImage: this.data.goods[0].goodsImage,
+          carPrice: this.data.goods[0].goodsPrice,
+          carName: this.data.goods[0].goodsName,
+          carNum: 1,
+          carShow: true
+        };
+
+        // 1、判断是否有数据
+        var GoodsCarList = wx.getStorageSync('GoodsCarList');
+        if(GoodsCarList){
+            // 3、有数据，并且是相同的商品数据，则商品数量+1
+            var isGoodsData = true;
+            for(var i = 0; i < GoodsCarList.length; i++){
+                if (GoodsCarList[i].goodsId == this.data.goods[0].goodsId) {
+                    GoodsCarList[i].carNum += 1;
+                    isGoodsData = false;
+                }
+            }
+            // 4、有数据，数组追加数据
+            if(isGoodsData){
+                GoodsCarList.push(CarData);
+                isGoodsData = true;
+            }
+            wx.setStorageSync('GoodsCarList', GoodsCarList);
+        }else{
+            // 2、没有则添加数据
+            wx.setStorageSync('GoodsCarList', [CarData]);
+        }
+        
+        console.log(wx.getStorageSync("GoodsCarList"));
+
+
         this.setData({
-            carTotalNum: newNum
+            carTotalNum: wx.getStorageSync("GoodsCarList").length
         })
+        
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options.goods_id);
+        this.setData({
+            carTotalNum: wx.getStorageSync("GoodsCarList").length
+        })
     },
 
     /**
