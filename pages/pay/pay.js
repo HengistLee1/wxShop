@@ -17,13 +17,29 @@ Page({
     //总价格计算
     var totalData = 0;
     for (var i = 0; i < getCarData.length; i++) {
-      totalData = totalData + getCarData[i].carPrice * getCarData[i].carNum;
+      totalData += getCarData[i].carPrice * getCarData[i].carNum;
     }
 
 
     this.setData({
       totalPrice: totalData,
       carArray: getCarData
+    })
+  },
+
+  /**
+   * 支付功能
+   */
+  wxPay: function(){
+    wx.requestPayment({
+      timeStamp: '',
+      nonceStr: '',
+      package: '',
+      signType: 'MD5',
+      paySign: '',
+      success: function(res) {
+
+      },
     })
   },
 

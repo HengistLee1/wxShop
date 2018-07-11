@@ -86,7 +86,6 @@ Page({
           carNum: 1,
           carShow: true
         };
-        console.log("1");
         console.log(this.data.goods[0].id);
 
         // 1、判断是否有数据

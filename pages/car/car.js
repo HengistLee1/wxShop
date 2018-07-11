@@ -73,6 +73,7 @@ Page({
     for (var i in shopCar) {
       total += parseInt(shopCar[i].carPrice) * shopCar[i].carNum;
     }
+    wx.setStorageSync("GoodsCarList", shopCar);
     this.setData({
       carArray: shopCar,
       totalPrice: total

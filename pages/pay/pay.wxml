@@ -33,6 +33,6 @@
 <view class='car_bot'>
     <view class='car_bot_wrap'>
         总价<text class='car_total_monay'> ￥{{totalPrice}}</text>
-        <view class='car_order_confirm'>前往支付</view>
+        <view class='car_order_confirm' bindtap='wxPay'>前往支付</view>
     </view>
 </view>
