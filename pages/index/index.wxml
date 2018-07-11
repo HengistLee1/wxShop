@@ -46,7 +46,7 @@
         <image src='{{item.goodsImage}}' class='goods_image'></image>
     </view>
     <view class='goods_right'>
-        <navigator url='/pages/spdetail/spdetail?goods_id={{item.goodsId}}'>
+        <navigator url='/pages/spdetail/spdetail?goods_id={{item.id}}'>
             <view class='goods_name'>
                 <text>{{item.goodsName}}</text>
             </view>

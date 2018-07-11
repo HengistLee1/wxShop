@@ -1,6 +1,7 @@
+<import src="../../wxParse/wxParse.wxml"/>
 <!-- 轮播图  -->
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{image}}" wx:key="*this">
+    <block wx:for="{{goods[0].goodsImgs}}" wx:key="*this">
         <swiper-item>
             <view>
                 <image src='{{item}}' class='swiper_images'></image>
@@ -73,8 +74,8 @@
 
 <view class='goods_detail'>
     <view class='goods_detail_title'>商品详情</view>
-    <view>
-        <image src='{{goods[0].goodsDetails}}' bindload='cusImageLoad' style='height:{{imageHeight}};width:{{imageWidth}};'></image>
+    <view class='wxParse'>
+        <template is='wxParse' data='{{wxParseData:article.nodes}}'/>
     </view>
 </view>
 

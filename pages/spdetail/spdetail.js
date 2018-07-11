@@ -1,49 +1,77 @@
 // pages/spdetail/spdetail.js
 var WxAutoImage = require("../../js/detailImage.js");
+var WxParse = require("../../wxParse/wxParse.js");
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        image: [
-            'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-            'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-            'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-        ],
+        // image: [
+        //     'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        //     'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+        //     'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+        // ],
         indicatorDots: true,
         vertical: false,
         autoplay: true,
         interval: 2000,
         duration: 500,
-        goods: [
-            {
-                goodsId: 2,
-                goodsName: "木村耀司登山旅行大学生户外情侣双肩背包外带小背包",
-                goodsImage: "../../image/test.jpg",
-                goodsImgs: [
-                    'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-                    'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-                    'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-                ],
-                goodsAddress: "广州",
-                goodsPrice: "169.00",
-                goodsOldPrice: "269.00",
-                iscollect: false,
-                goodsContent: "蜜蜂从植物的花中采取含水量约为75%的花蜜或分泌物，存入自己第二个胃中，在体内多种转化的作用下，经过15天左右反复酝酿各种维生素、矿物质和氨基酸丰富到一定的数值时，同时把花蜜中的多糖转变成人体可直接吸收的单糖葡萄糖、果糖，水分含量少于23%存贮到巢洞中，用蜂蜡密封。",
-                brand: "蜂之堂",
-                yieldly: "湖南长沙",
-                size: "300g/罐",
-                times: "12月",
-                production: "2016/11/23",
-                savings: "低温避光存储",
-                apply: "老少皆宜",
-                eat: "直接食用或兑水",
-                cozy: "请使用60度一下温水",
-                goodsDetails: "../../image/IMG_0466.JPG"
-            }
-        ],
+        // goods: [
+        //     {
+        //         goodsId: 1,
+        //         goodsName: "木村耀司登山旅行大学生户外情侣双肩背包外带小背包",
+        //         goodsImage: "../../image/test.jpg",
+        //         goodsImgs: [
+        //             'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        //             'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+        //             'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+        //         ],
+        //         goodsAddress: "广州",
+        //         goodsPrice: "169.00",
+        //         goodsOldPrice: "269.00",
+        //         iscollect: false,
+        //         goodsContent: "蜜蜂从植物的花中采取含水量约为75%的花蜜或分泌物，存入自己第二个胃中，在体内多种转化的作用下，经过15天左右反复酝酿各种维生素、矿物质和氨基酸丰富到一定的数值时，同时把花蜜中的多糖转变成人体可直接吸收的单糖葡萄糖、果糖，水分含量少于23%存贮到巢洞中，用蜂蜡密封。",
+        //         brand: "蜂之堂",
+        //         yieldly: "湖南长沙",
+        //         size: "300g/罐",
+        //         times: "12月",
+        //         production: "2016/11/23",
+        //         savings: "低温避光存储",
+        //         apply: "老少皆宜",
+        //         eat: "直接食用或兑水",
+        //         cozy: "请使用60度一下温水",
+        //         goodsDetails: "../../image/IMG_0466.JPG"
+        //     }
+        // ],
         carTotalNum: 0
+    },
+
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+      console.log(options);
+      var that = this;
+      wx.request({
+        url: 'http://localhost/weiphp/index.php?s=/w17/ShopCms/ShopCms/getGoodsId', //仅为示例，并非真实的接口地址
+        data: {
+          id: options.goods_id
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          console.log(res.data);
+          var goodsDetails = res.data.data[0].goodsDetails;
+          WxParse.wxParse('article', 'html', goodsDetails,that,5);
+          that.setData({
+            goods: res.data.data,
+            carTotalNum: wx.getStorageSync("GoodsCarList").length
+          })
+        }
+      })
+
     },
 
     /**
@@ -51,13 +79,15 @@ Page({
      */
     addToCar: function(){
         var CarData = {
-          goodsId: this.data.goods[0].goodsId,
+          goodsId: this.data.goods[0].id,
           carImage: this.data.goods[0].goodsImage,
           carPrice: this.data.goods[0].goodsPrice,
           carName: this.data.goods[0].goodsName,
           carNum: 1,
           carShow: true
         };
+        console.log("1");
+        console.log(this.data.goods[0].id);
 
         // 1、判断是否有数据
         var GoodsCarList = wx.getStorageSync('GoodsCarList');
@@ -90,14 +120,6 @@ Page({
         
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        this.setData({
-            carTotalNum: wx.getStorageSync("GoodsCarList").length
-        })
-    },
 
     /**
      * 控制图片大小缩放

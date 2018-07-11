@@ -73,6 +73,9 @@
 }
 .goods_name{
     font-size: 14px;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .goods_address{
     color: #929292;

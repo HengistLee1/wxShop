@@ -16,12 +16,12 @@
     <view class='table_header'>
         <view class='table_goods_name'>商品</view>
         <view class='table_goods_num'>数量</view>
-        <view class='table_goods_con'>总价</view>
+        <view class='table_goods_con'>单价</view>
     </view>
-    <view class="table_content_item">
-        <view class='table_goods_name'>木村耀司登山旅行大学生户外情侣双肩背包外带小背包</view>
-        <view class='table_goods_num'>3</view>
-        <view class='table_goods_con'>￥507.00</view>
+    <view class="table_content_item" wx:for="{{carArray}}" wx:key="*this">
+        <view class='table_goods_name'>{{item.carName}}</view>
+        <view class='table_goods_num'>{{item.carNum}}</view>
+        <view class='table_goods_con'>￥{{item.carPrice}}</view>
     </view>
 </view>
 
@@ -32,7 +32,7 @@
 
 <view class='car_bot'>
     <view class='car_bot_wrap'>
-        总价<text class='car_total_monay'> ￥169.00</text>
+        总价<text class='car_total_monay'> ￥{{totalPrice}}</text>
         <view class='car_order_confirm'>前往支付</view>
     </view>
 </view>
