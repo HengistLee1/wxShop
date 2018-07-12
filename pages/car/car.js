@@ -87,16 +87,24 @@ Page({
   delProduct: function(options) {
     var that = this;
     let Index = options.target.dataset.index;
-    var key = "carArray[" + Index + "].carShow";
-    var obj = {};
-    obj[key] = false;
+    var total = 0;
 
     //修改存储器参数
     var getCardata = wx.getStorageSync("GoodsCarList");
-    getCardata[Index].carShow = false;
+    for(var i in getCardata){
+        if (i == Index){
+            getCardata.splice(i,1);
+            for(var k in getCardata){
+                total += getCardata[k].carPrice * getCardata[k].carNum;
+            }
+        }
+    }
+    console.log(getCardata);
     wx.setStorageSync("GoodsCarList", getCardata);
-
-    that.setData(obj);
+    that.setData({
+        carArray: getCardata,
+        totalPrice: total
+    });
   },
 
   /**

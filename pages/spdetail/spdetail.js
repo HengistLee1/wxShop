@@ -94,7 +94,7 @@ Page({
             // 3、有数据，并且是相同的商品数据，则商品数量+1
             var isGoodsData = true;
             for(var i = 0; i < GoodsCarList.length; i++){
-                if (GoodsCarList[i].goodsId == this.data.goods[0].goodsId) {
+                if (GoodsCarList[i].goodsId == this.data.goods[0].id) {
                     GoodsCarList[i].carNum += 1;
                     isGoodsData = false;
                 }
